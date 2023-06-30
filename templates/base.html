@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins" rel="stylesheet"> {% block head %} {% endblock %}
+</head>
+
+<body style="background-color: #f1f1f1; font-family: Poppins;" class="text-zinc-700">
+    <div class="sticky top-0 z-50">
+        <div class="py-4 px-8 md:px-12 lg:px-20 flex justify-between items-center shadow-md from-emerald-600 via-teal-600 to-green-700 bg-gradient-to-r">
+            <h1 class="font-semibold text-lg md:text-xl text-teal-100 font-sans">AUTHENTIC MYANMAR</h1>
+            <div class="rounded-2xl py-2 px-4 bg-teal-500 hidden lg:block text-base">
+                <button onclick="window.open('/', '_self')" class="cursor-pointer mx-3 text-white hover:text-zinc-200  font-bold">Home <span class="ms-1 fa fa-home"></span></button>
+                <button class="cursor-pointer mx-3 text-white hover:text-zinc-200  font-bold">Places to go <span class="ms-1 fa fa-star"></span></button>
+                <button class="cursor-pointer mx-3 text-white hover:text-zinc-200  font-bold">Things To do <span class="ms-1 fa-solid fa-list-check"></span></button>
+                <button class="cursor-pointer mx-3 text-white hover:text-zinc-200  font-bold">Blogs <span class="ms-1 fa-solid fa-pen"></span></button>
+            </div>
+            <div class="hidden lg:block text-base">
+                <button class="cursor-pointer mx-6 text-white hover:text-zinc-200 font-bold">Login</button>
+                <button class="bg-zinc-100 hover:bg-zinc-200 cursor-pointer px-4 py-2 font-bold rounded-2xl">Sign Up</button>
+            </div>
+            <div class="block lg:hidden">
+                <button class="bg-zinc-100 hover:bg-zinc-200 cursor-pointer px-4 py-2 font-bold rounded-2xl" id="menu">Menu</button>
+            </div>
+        </div>
+        <div id="mobileMenu" class="shadow-md hidden lg:hidden divide-y divide-slate-400 flex-col py-4 px-8 md:px-12 lg:px-20 from-emerald-600 via-teal-600 to-green-700 bg-gradient-to-r">
+            <div class="mb-4">
+                <button onclick="window.open('/', '_self')" class="block mt-4 cursor-pointer text-white hover:text-zinc-200  font-bold">Home <span class="ms-1 fa fa-home"></span></button>
+                <button class="block mt-4 cursor-pointer text-white hover:text-zinc-200  font-bold">Places to go <span class="ms-1 fa fa-star"></span></button>
+                <button class="block mt-4 cursor-pointer text-white hover:text-zinc-200  font-bold">Things to do <span class="ms-1 fa-solid fa-list-check"></span></button>
+                <button class="block mt-4 cursor-pointer text-white hover:text-zinc-200  font-bold">Blogs <span class="ms-1 fa-solid fa-pen"></span></button>
+            </div>
+            <div class="mt-2">
+                <button class="block mt-4 cursor-pointer me-6 text-white hover:text-zinc-200 font-bold">Login</button>
+                <button class="block mt-4 bg-zinc-100 hover:bg-zinc-200 cursor-pointer px-4 py-2 font-bold rounded-2xl">Sign Up</button>
+            </div>
+        </div>
+    </div>
+    {% block video %} {% endblock %}
+    <div class="px-8 md:px-12 lg:px-20 ">
+        {% block content %} {% endblock %}
+    </div>
+    <div class=" px-8 md:px-12 lg:px-20 py-12 bg-slate-900">
+        <div class="flex flex-col md:flex-row flex-wrap justify-between text-white">
+            <ul class="mt-12">
+                <li class="mb-6 text-zinc-500">Useful Links</li>
+                <li class="mt-2">Home</li>
+                <li class="mt-2">Places to go</li>
+                <li class="mt-2">Things to do</li>
+                <li class="mt-2">Blogs</li>
+            </ul>
+            <ul class="mt-12">
+                <li class="mb-6 text-zinc-500">Your Account</li>
+                <li class="mt-2">Login</li>
+                <li class="mt-2">Sign Up</li>
+            </ul>
+            <ul class="mt-12">
+                <li class="mb-6 text-zinc-500">Info</li>
+                <li class="mt-2">Applying Visa</li>
+                <li class="mt-2">How to travel</li>
+                <li class="mt-2">Tips</li>
+            </ul>
+
+            <ul class="mt-12">
+                <li class="mb-6 text-zinc-500">Blogs</li>
+                <li class="mt-2">Best hotels in Bagan</li>
+                <li class="mt-2">Food you shouldn't miss in Myanmar</li>
+                <li class="mt-2">Cultural Places</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $("#menu ").click(function() {
+                $("#mobileMenu ").slideToggle(300)
+            });
+        });
+    </script>
+    {% block script %} {% endblock %}
+</body>
+
+</html>

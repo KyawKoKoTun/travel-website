@@ -1,0 +1,17 @@
+Popular Places
+Plan Your Trip -> State/Division -> City/Place (Show Popular ones)(Reviews) -> Recommended Hotels(Rating)/Recommend Places/Things to do -> Booking
+
+Login/Sign Up
+
+
+home 
+-----
+video
+about myanmar
+map
+places slide
+
+
+nav
+----
+places to go

@@ -1,0 +1,65 @@
+{% extends "base.html" %}{% block video %}
+
+<div class="-z-10 w-full">
+    <video class="-z-10 w-full h-auto lg:h-[400px] object-cover" src="https://tourisminmyanmar.com.mm//be-enchanted-now.webm" autoplay="{true}" loop muted></video>
+</div> {% endblock %} {% block content %}
+
+<div class="bg-white shadow-md rounded-b-2xl m-0 mb-8 p-8 z-10">
+    <h1 class="text-2xl text-emerald-600 text-center font-bold">Authentic Myanmar</h1>
+    <p class="my-12">
+        Myanmar is an unexplored natural and cultural wonder that offers one of the best authentic experiences for the traveller to Asia. From the snow-covered rugged Himalayas in the north to the pristine deep blue waters in the south, Myanmar is a land blessed
+        and abundant.
+    </p>
+
+</div>
+
+<div class="shadow-md w-full rounded-2xl my-8 p-8 grid grid-cols-1 md:grid-cols-2 gap-8 bg-white">
+    <div>
+        <h1 class="text-2xl text-emerald-600 text-center font-bold">STAY SAFE & DREAM OF ENCHANTING MYANMAR</h1>
+        <p class="my-6">
+            The natural attractions include caves, corals, lakes, rivers, beaches, islands, and mountains, whilst the connoisseur of culture and history will find pagodas, an array of vibrant festivals, 135 tribes and a spread of delicious cuisine to tantalise their
+            taste buds.
+        </p>
+    </div>
+    <img src="https://ichef.bbci.co.uk/news/976/cpsprodpb/10D71/production/_129877986_bbcm_myanmar_country-profile_250523.png.webp">
+</div>
+
+<div class="w-full rounded-2xl my-8 p-8 bg-white shadow-md">
+    <h1 class="text-2xl text-emerald-600 text-center font-bold">DISCOVER THE BEST DESTINATIONS OF MYANMAR
+    </h1>
+    <div class="cursor-pointer mt-6 grid grid-cols-1 w-full">
+        <div onclick="window.open('/bagan', '_self')" class="relative w-full group h-24 overflow-hidden hover:h-40 mx-auto duration-200 ease-in-out rounded-xl shadow-md">
+            <img class="w-full object-cover -mt-4 lg:-mt-60 brightness-75 group-hover:brightness-100" src="https://tourisminmyanmar.com.mm/wp-content/uploads/2020/03/Temples-in-Bagan-1024x682.jpg">
+            <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center">
+                <h2 class="text-white bg-emerald-600 p-2 text-xl font-bold">Bagan</h2>
+            </div>
+        </div>
+        <div class="-mt-4 w-full relative group h-24 overflow-hidden hover:h-auto lg:hover:h-40 mx-auto duration-200 ease-in-out rounded-xl shadow-md">
+            <img class="w-full object-cover lg:-mt-40 brightness-75 group-hover:brightness-100" src="https://tourisminmyanmar.com.mm/wp-content/uploads/2020/03/Golden-Palace-Monastery-.jpg">
+            <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center">
+                <h2 class="text-white bg-emerald-600 p-2 text-xl font-bold">Mandalay</h2>
+            </div>
+        </div>
+        <div class="-mt-4 w-full relative group h-24 overflow-hidden hover:h-40 mx-auto duration-200 ease-in-out rounded-xl shadow-md">
+            <img class="w-full object-cover lg:-mt-80 brightness-75 group-hover:brightness-100" src="https://tourisminmyanmar.com.mm/wp-content/uploads/2020/03/Inle-lake.jpg">
+            <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center">
+                <h2 class="text-white bg-emerald-600 p-2 text-xl font-bold">Inle Lake</h2>
+            </div>
+        </div>
+        <div class="-mt-4 w-full relative group h-24 overflow-hidden hover:h-40 mx-auto duration-200 ease-in-out rounded-xl shadow-md">
+            <img class="w-full object-cover lg:-mt-40 brightness-75 group-hover:brightness-100" src="https://tourisminmyanmar.com.mm/wp-content/uploads/2020/03/downtown-area-of-Yangon.jpg">
+            <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center">
+                <h2 class="text-white bg-emerald-600 p-2 text-xl font-bold">Yangon</h2>
+            </div>
+        </div>
+        <div class="-mt-4 w-full relative group h-24 overflow-hidden hover:h-40 mx-auto duration-200 ease-in-out rounded-xl shadow-md">
+            <img class="w-full object-cover lg:-mt-80 brightness-75 group-hover:brightness-100" src="https://tourisminmyanmar.com.mm/wp-content/uploads/2020/03/Golden-color-Uppatasanti-pagoda-in-Nay-Pyi-Taw-.jpg">
+            <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center">
+                <h2 class="text-white bg-emerald-600 p-2 text-xl font-bold">Nay Pyi Taw</h2>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %} {% block script %} {% endblock %}

@@ -1,0 +1,161 @@
+{% extends "base.html" %}{% block video %}
+<div class="relative">
+    <div class="absolute top-0 left-0 w-full h-full flex items-center justify-center">
+        <h2 class="text-white drop-shadow-xl p-2 text-6xl font-bold">Bagan</h2>
+    </div>
+    <img class="w-full object-cover h-auto lg:h-[400px]" src="https://tourisminmyanmar.com.mm/wp-content/uploads/2020/03/Temples-in-Bagan-1024x682.jpg">
+</div> {% endblock %} {% block content %}
+<div class="my-8 rounded-2xl p-8 bg-emerald-600">
+    <h1 class="text-white text-2xl font-bold">Facinating Facts <span class="fa fa-star"></span></h1>
+    <ol class="list-disc mt-6 text-white">
+        <li>Bagan is commonly termed as a sea of temples by people across the world. It has the largest and densest concentration of Buddhist temples, pagodas, stupas and ruins in the world.</li>
+        <li class="mt-4">The best time to visit Bagan is from November to May when there is little rainfall in the area. </li>
+        <li class="mt-4">Bagan cuisine is considered to be the true taste of Asia. It combines the best of Indian, Chinese and Thai cuisine </li>
+    </ol>
+</div>
+<div class="bg-white p-8 my-8 rounded-2xl shadow-md">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <img class="col-span-1" src="https://tourisminmyanmar.com.mm/wp-content/uploads/2019/08/Travel_Myanmar_UNESCO-1_bagan.jpg">
+        <div class="col-span-3">
+            <p class="">Located in Central Myanmar, only 4 hours away from Mandalay, Bagan is one of the world’s greatest archaeological sites. Visit this amazing historical town hosting more than 2,200 temples big and small. Set amongst thick greenery on the Ayeyarwady
+                river basin with misty mountains at a distance, Bagan will surely enchant you with its mystical appearance. The temples rise above the canopy of trees, presenting a picture-perfect scenery to visitors.</p>
+            <p class="mt-4">
+                Bagan was the first capital of the Pagan Kingdom between the 9th to 13th centuries. More than 10,000 Buddhist temples, pagodas and monasteries were constructed during the most flourishing days of the Kingdom between the 11th to 13th centuries. Today,
+                around 2,200 temples and pagodas still survive and are carefully looked after by the government.
+            </p>
+        </div>
+    </div>
+    <p class="mt-4">The temples are a part of Bagan Archaeological Zone. They contain carvings, frescos and statues of Buddha, which are certainly mesmerising and fun to explore. Out of the 2,200 sites, only a few are regularly visited. Being the country’s foremost tourist
+        destination, Bagan has innumerable licensed tourist transport services to help tourists enjoy this beautiful site.
+    </p>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <img class="order-2 col-span-1" src="https://tourisminmyanmar.com.mm/wp-content/uploads/2019/08/Bagan-1.jpg">
+        <div class="mt-6 col-span-3 order-1">
+            <p class="">
+                Apart from the temples, visitors can also enjoy a leisure trip on the Ayeyarwady River, Myanmar’s lifeline. Take a cruise from Mandalay to Bagan and enjoy the riparian vegetation, the soothing river breeze and not to mention the sights and sounds of life
+                along the river. You will also be able to indulge in the fascinating views of Mt. Sagaing, Pakokku, Myingyan and other sites along the way.
+            </p>
+        </div>
+    </div>
+    <div class="mt-6 bg-emerald-600 p-4">
+        <h1 class="text-2xl text-white">History</h1>
+        <p class="mt-6 text-white">History tells us that Bagan was founded in the 2nd Century AD and fortified in 849AD by King Pyinbya, a successor of the founder of Bagan. The city was the capital of the Pagan Empire from 1044 to 1287. During this time, the rulers and wealthy
+            subjects constructed more than 10,000 religious monuments. The city prospered during this time and grew in size. It was centre for secular and religious studies. The Pagan empire collapsed in 1287.
+
+        </p>
+    </div>
+    <div class="mt-6">
+        <h1 class="text-2xl mb-8">How to get there</h1>
+        <div class="my-4 flex flex-row justify-between items-center">
+            <span class="fa fa-plane text-4xl text-emerald-600"></span>
+            <p class="px-4">Bagan is accessible by air from all the major cities of Myanmar. The airport in Bagan is called Nyaung U. The nearest international airports are in Yangon and Mandalay. The flight duration is 1 hour 20 minutes from Yangon and only 20 minutes
+                from Mandalay.</p>
+        </div>
+        <div class="my-4 flex flex-row justify-between items-center">
+            <span class="fa fa-car text-4xl text-emerald-600"></span>
+            <p class="px-4">Bagan is well-connected by road with the rest of the country. Regular bus services are available from Mandalay, Yangon and other cities.
+            </p>
+        </div>
+        <div class="my-4 flex flex-row justify-between items-center">
+            <span class="fa fa-ship text-4xl text-emerald-600"></span>
+            <p class="px-4">Bagan can also be reached by train. Overnight trains run daily from Yangon, departing around 4:00 PM from Yangon and reaching Bagan at around 10:00 AM the next day. There is a train service between Mandalay and Bagan as well and takes around
+                7 hours to reach.</p>
+        </div>
+        <div class="my-4 flex flex-row justify-between items-center">
+            <span class="fa fa-bus text-4xl text-emerald-600"></span>
+            <p class="px-4">There is a daily express ferry service from Mandalay to Bagan which leaves at 7:00 AM from Mandalay and takes around 8 hours to reach Bagan. This is one of the most scenic rides and highly recommended in case you have time to spare.</p>
+        </div>
+    </div>
+</div>
+
+<div class="border border-gray-300 rounded">
+    <div class="flex">
+        <button id="attractions-tab" class="w-1/2 py-2 px-4 bg-gray-200 text-gray-700 font-semibold rounded-t-md focus:outline-none" onclick="switchTab('attractions')">Top Attractions</button>
+        <button id="hotels-tab" class="w-1/2 py-2 px-4 text-gray-700 font-semibold rounded-t-md focus:outline-none" onclick="switchTab('hotels')">Hotels</button>
+    </div>
+    <div class="p-4">
+        <div id="attractions-content">
+            <h2 class="text-2xl font-semibold my-6">Top Attractions</h2>
+            <p>Bagan is one of the most famous archaeological sites in the world. Explore the ancient monuments of different periods spread all across the city. These monuments stretch over a vast area on the bank of Ayeyarwady river up to the Turintaung
+                range. Although the best way to explore these temples is by foot, a unique idea to enjoy a panoramic view of the Bagan temples is by taking a ride on a hot air balloon. Taking this ride during sunrise and sunset is the icing on the cake
+                and we highly recommend that. Those who are not keen to take a balloon ride need not get disappointed. You can simply climb up to the top terrace of the Bagan viewing tower and enjoy the wide expanse of temples.</p>
+            <p class="mt-4">
+                The town is not only about temples. You should also take a cruise down the Ayeyarwady river and enjoy the scenic sunset. The river, the heartline of Myanmar has breathtaking views which should not be missed. You can also take a boat ride between Mandalay
+                and Bagan and enjoy the view.
+            </p>
+            <p class="mt-4">
+                For the shopaholic, a visit to Bagan is incomplete without visiting the famous Bagan Lacquerware handicraft market and picking up some mementoes. You can also visit factories and get a first-hand experience of oil processing and palm sugar (jaggery) production.
+            </p>
+            <div class="my-6 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols">
+                <div>
+                    <img class="h-52 object-cover" src="https://tourisminmyanmar.com.mm/wp-content/uploads/2019/08/rsz_14-300x188.jpg">
+                    <p class="text-xl mt-4">Ananda Temple, Bagan</p>
+                    <button class="px-8 py-2 bg-emerald-600 hover:bg-emerald-500 text-white mt-4 rounded-md">Read More</button>
+                </div>
+                <div>
+                    <img class="h-52 object-cover" src="https://tourisminmyanmar.com.mm/wp-content/uploads/2020/04/buu_pagoda-300x200.jpg">
+                    <p class="text-xl mt-4">Buu Pagoda, Bagan </p>
+                    <button class="px-8 py-2 bg-emerald-600 hover:bg-emerald-500 text-white mt-4 rounded-md">Read More</button>
+                </div>
+                <div>
+                    <img class="h-52 object-cover" src="https://tourisminmyanmar.com.mm/wp-content/uploads/2020/04/dhammayangyi_01-300x200.jpg">
+                    <p class="text-xl mt-4">Dhammayangyi , Bagan</p>
+                    <button class="px-8 py-2 bg-emerald-600 hover:bg-emerald-500 text-white mt-4 rounded-md">Read More</button>
+                </div>
+                <div>
+                    <img class="h-52 object-cover" src="https://tourisminmyanmar.com.mm/wp-content/uploads/2020/04/shwezigon_pagoda_01-300x196.jpg">
+                    <p class="text-xl mt-4">Shwezigon Pagoda, Bagan</p>
+                    <button class="px-8 py-2 bg-emerald-600 hover:bg-emerald-500 text-white mt-4 rounded-md">Read More</button>
+                </div>
+                <div>
+                    <img class="h-52 object-cover" src="https://tourisminmyanmar.com.mm/wp-content/uploads/2020/04/thatbinnyu_pagoda_01-300x200.jpg">
+                    <p class="text-xl mt-4">Thatbinnyu Pagoda, Bagan</p>
+                    <button class="px-8 py-2 bg-emerald-600 hover:bg-emerald-500 text-white mt-4 rounded-md">Read More</button>
+                </div>
+            </div>
+        </div>
+        <div id="hotels-content" class="hidden">
+            <h2 class="text-2xl font-semibold my-6">Hotels</h2>
+            <p>Here are best hotels to stay in Bagan.</p>
+            <div class="my-6 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols">
+                <div>
+                    <img class="h-52 object-cover" src="https://cf.bstatic.com/xdata/images/hotel/square200/37313913.webp?k=d873cf9886e5ef2a5cdc75a0173a6d9cf60f2823051c2bbd45244c5bb4ff355d&o=">
+                    <p class="text-xl mt-4">Hotel Umbra, Bagan</p>
+                    <button class="px-8 py-2 bg-emerald-600 hover:bg-emerald-500 text-white mt-4 rounded-md">Book Now</button>
+                </div>
+                <div>
+                    <img class="h-52 object-cover" src="https://cf.bstatic.com/xdata/images/hotel/square200/246402295.webp?k=4624d2189626280ea0d00be6f7bfe80f56083235bcf72ce659503004648fce1f&o=">
+                    <p class="text-xl mt-4">Ruby True, Bagan</p>
+                    <button class="px-8 py-2 bg-emerald-600 hover:bg-emerald-500 text-white mt-4 rounded-md">Book Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %} {% block script %}
+<script>
+    function switchTab(tab) {
+        const attractionsTab = document.getElementById('attractions-tab');
+        const hotelsTab = document.getElementById('hotels-tab');
+        const attractionsContent = document.getElementById('attractions-content');
+        const hotelsContent = document.getElementById('hotels-content');
+
+        attractionsContent.classList.add('hidden');
+        hotelsContent.classList.add('hidden');
+        attractionsTab.classList.remove('bg-gray-200');
+        attractionsTab.classList.remove('text-gray-700');
+        hotelsTab.classList.remove('bg-gray-200');
+        hotelsTab.classList.remove('text-gray-700');
+
+        if (tab === 'attractions') {
+            attractionsContent.classList.remove('hidden');
+            attractionsTab.classList.add('bg-gray-200');
+            attractionsTab.classList.add('text-gray-700');
+        } else if (tab === 'hotels') {
+            hotelsContent.classList.remove('hidden');
+            hotelsTab.classList.add('bg-gray-200');
+            hotelsTab.classList.add('text-gray-700');
+        }
+    }
+</script> {% endblock %}

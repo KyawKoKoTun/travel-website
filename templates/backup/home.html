@@ -1,0 +1,132 @@
+{% extends "base.html" %} {% block content %}
+<img class="absolute -z-10 top-0 left-0 w-full brightness-50" src="https://cdn.theatlantic.com/media/img/photo/2019/07/bagan/b01_127437272-1/original.jpg">
+<div class="my-16 lg:my-24 grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <div class="rounded-full cursor-pointer order-1 lg:order-2 hover:bg-opacity-100 cursor:pointer my-auto mx-auto w-20 h-20 lg:w-40 lg:h-40 bg-opacity-30 flex flex-col justify-around align-middle bg-emerald-500 backdrop-blur-sm shadow-lg">
+        <i class="fa fa-play-circle block mx-auto text-white text-4xl lg:text-8xl"></i>
+    </div>
+    <div class="rounded-2xl order-2 lg:order-1 bg-gradient-to-r from-emerald-600 to-teal-600 shadow-lg p-8">
+        <h1 class="text-2xl font-bold text-center text-white">Plan Your Trip</h1>
+        <div class="relative mt-6">
+            <select name="state" class="px-4 py-2 rounded-lg block mx-auto">
+            <option hidden>State/Province</option>
+            <option>Bago Division</option>
+        </select>
+        </div>
+        <button class="block mt-8 bg-emerald-200 hover:bg-emerald-400 mx-auto cursor-pointer px-4 py-2 font-bold rounded-2xl">Next</button>
+    </div>
+</div>
+<h1 class="text-2xl font-bold text-center text-zinc-800 sm:text-white">Popular Places <span class=" text-emerald-300 fa fa-map-location"></span></h1>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-6 gap-6">
+    <div class="bg-white cursor-pointer hover:bg-emerald-500 group grid grid-cols-1 shadow-md shadow-slate-400 rounded-2xl p-4 hover:scale-105 duration-200">
+        <img class="rounded-t-lg" src="https://cdn.theatlantic.com/media/img/photo/2019/07/bagan/b01_127437272-1/original.jpg">
+        <h2 class="text-xl text-emerald-600 mt-4 group-hover:text-white">Bagan</h2>
+        <p class="mt-2 mb-4">Bagan is an ancient city and a UNESCO World Heritage Site in the Mandalay Region of Myanmar.</p>
+        <hr>
+        <div class="mt-4">
+            <h5 class="inline me-4 text-emerald-600 group-hover:text-white"><span class="fa fa-thumbs-up text-xl"></span> 43
+            </h5>
+            <h5 class="inline me-4 text-emerald-600 group-hover:text-white"><span class="fa fa-comment text-xl"></span> 5
+            </h5>
+        </div>
+    </div>
+    <div class="bg-white cursor-pointer hover:bg-emerald-500 group grid grid-cols-1 shadow-md shadow-slate-400 rounded-2xl p-4 hover:scale-105 duration-200">
+        <img class="rounded-t-lg" src="https://cdn.theatlantic.com/media/img/photo/2019/07/bagan/b01_127437272-1/original.jpg">
+        <h2 class="text-xl text-emerald-600 mt-4 group-hover:text-white">Bagan</h2>
+        <p class="mt-2 mb-4">Bagan is an ancient city and a UNESCO World Heritage Site in the Mandalay Region of Myanmar.</p>
+        <hr>
+        <div class="mt-4">
+            <h5 class="inline me-4 text-emerald-600 group-hover:text-white"><span class="fa fa-thumbs-up text-xl"></span> 43
+            </h5>
+            <h5 class="inline me-4 text-emerald-600 group-hover:text-white"><span class="fa fa-comment text-xl"></span> 5
+            </h5>
+        </div>
+    </div>
+    <div class="bg-white cursor-pointer hover:bg-emerald-500 group grid grid-cols-1 shadow-md shadow-slate-400 rounded-2xl p-4 hover:scale-105 duration-200">
+        <img class="rounded-t-lg" src="https://cdn.theatlantic.com/media/img/photo/2019/07/bagan/b01_127437272-1/original.jpg">
+        <h2 class="text-xl text-emerald-600 mt-4 group-hover:text-white">Bagan</h2>
+        <p class="mt-2 mb-4">Bagan is an ancient city and a UNESCO World Heritage Site in the Mandalay Region of Myanmar.</p>
+        <hr>
+        <div class="mt-4">
+            <h5 class="inline me-4 text-emerald-600 group-hover:text-white"><span class="fa fa-thumbs-up text-xl"></span> 43
+            </h5>
+            <h5 class="inline me-4 text-emerald-600 group-hover:text-white"><span class="fa fa-comment text-xl"></span> 5
+            </h5>
+        </div>
+    </div>
+    <div class="bg-white cursor-pointer hover:bg-emerald-500 group grid grid-cols-1 shadow-md shadow-slate-400 rounded-2xl p-4 hover:scale-105 duration-200">
+        <img class="rounded-t-lg" src="https://cdn.theatlantic.com/media/img/photo/2019/07/bagan/b01_127437272-1/original.jpg">
+        <h2 class="text-xl text-emerald-600 mt-4 group-hover:text-white">Bagan</h2>
+        <p class="mt-2 mb-4">Bagan is an ancient city and a UNESCO World Heritage Site in the Mandalay Region of Myanmar.</p>
+        <hr>
+        <div class="mt-4">
+            <h5 class="inline me-4 text-emerald-600 group-hover:text-white"><span class="fa fa-thumbs-up text-xl"></span> 43
+            </h5>
+            <h5 class="inline me-4 text-emerald-600 group-hover:text-white"><span class="fa fa-comment text-xl"></span> 5
+            </h5>
+        </div>
+    </div>
+
+</div>
+<div class="rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 shadow-lg my-16 p-8">
+    <h1 class="text-2xl font-bold text-center text-white">Get Help <span class=" text-emerald-300 fa-solid fa fa-question-circle"></span></h1>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-6">
+        <div class="grid grid-cols-1 bg-white shadow-md p-8 rounded-lg duration-200 hover:scale-105 hover:bg-emerald-400 group cursor-pointer">
+            <h1 class="fa-solid fa-file-circle-check animate-pulse text-4xl mb-8 text-center text-emerald-600"></h1>
+            <h1 class="text-xl text-center font-bold group-hover:text-white">Applying Visa</h1>
+        </div>
+        <div class="grid grid-cols-1 bg-white shadow-md p-8 rounded-lg duration-200 hover:scale-105 hover:bg-emerald-400 group cursor-pointer">
+            <h1 class="fa-solid fa-plane-departure animate-bounce text-4xl mb-8 text-center text-emerald-600"></h1>
+            <h1 class="text-xl text-center font-bold group-hover:text-white">How to travel to Myanmar</h1>
+        </div>
+        <div class="grid grid-cols-1 bg-white shadow-md p-8 rounded-lg duration-200 hover:scale-105 hover:bg-emerald-400 group cursor-pointer">
+            <h1 class="fa-solid fa-circle-question animate-spin text-4xl mb-8 text-center text-emerald-600"></h1>
+            <h1 class="text-xl text-center font-bold group-hover:text-white">Tips</h1>
+        </div>
+    </div>
+</div>
+<div class="my-16">
+    <h1 class="text-2xl font-bold text-center">Things to do in Myanmar <span class=" text-emerald-600 fa-solid fa-list-check"></span></h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mt-6 gap-6">
+        <div class="bg-white cursor-pointer hover:bg-emerald-500 group grid grid-cols-1 shadow-md shadow-slate-400 rounded-2xl p-4 hover:scale-105 duration-200">
+            <img class="rounded-t-lg" src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/09/d4/1a/e9/mount-popa.jpg?w=1200&h=-1&s=1">
+            <h2 class="text-xl text-emerald-600 mt-4 group-hover:text-white">Hiking in Popa</h2>
+            <p class="mt-2 mb-4">Mount Popa hold cultural and religious significance in Myanmar, attracting tourists interested in exploring the country's heritage and natural beauty.</p>
+        </div>
+        <div class="bg-white cursor-pointer hover:bg-emerald-500 group grid grid-cols-1 shadow-md shadow-slate-400 rounded-2xl p-4 hover:scale-105 duration-200">
+            <img class="rounded-t-lg" src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/09/d4/1a/e9/mount-popa.jpg?w=1200&h=-1&s=1">
+            <h2 class="text-xl text-emerald-600 mt-4 group-hover:text-white">Hiking in Popa</h2>
+            <p class="mt-2 mb-4">Mount Popa hold cultural and religious significance in Myanmar, attracting tourists interested in exploring the country's heritage and natural beauty.</p>
+        </div>
+        <div class="bg-white cursor-pointer hover:bg-emerald-500 group grid grid-cols-1 shadow-md shadow-slate-400 rounded-2xl p-4 hover:scale-105 duration-200">
+            <img class="rounded-t-lg" src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/09/d4/1a/e9/mount-popa.jpg?w=1200&h=-1&s=1">
+            <h2 class="text-xl text-emerald-600 mt-4 group-hover:text-white">Hiking in Popa</h2>
+            <p class="mt-2 mb-4">Mount Popa hold cultural and religious significance in Myanmar, attracting tourists interested in exploring the country's heritage and natural beauty.</p>
+        </div>
+        <div class="bg-white cursor-pointer hover:bg-emerald-500 group grid grid-cols-1 shadow-md shadow-slate-400 rounded-2xl p-4 hover:scale-105 duration-200">
+            <img class="rounded-t-lg" src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/09/d4/1a/e9/mount-popa.jpg?w=1200&h=-1&s=1">
+            <h2 class="text-xl text-emerald-600 mt-4 group-hover:text-white">Hiking in Popa</h2>
+            <p class="mt-2 mb-4">Mount Popa hold cultural and religious significance in Myanmar, attracting tourists interested in exploring the country's heritage and natural beauty.</p>
+        </div>
+    </div>
+</div>
+<div class="my-16">
+    <h1 class="text-2xl font-bold text-center">Best Hotels and Resorts <span class=" text-emerald-600 fa-solid fa-hotel"></span></h1>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-6 rounded-xl">
+        <div class="group relative">
+            <img class="rounded-xl h-96 w-full cursor-pointer brightness-50 hover:brightness-100" class="rounded-xl" src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/78389833.jpg?k=1ed2972d89fee25a1f7883a9902eeb372547975e5ef02122fe27961a209c3879&o=&hp=1">
+            <div class="absolute block group-hover:hidden bottom-8 left-8">
+                <h1 class="text-2xl text-emerald-400">Myanmar Life Hotel</h1>
+                <h2 class="text-2xl text-white"><span class="fa fa-star text-amber-500 me-2"></span>4.5 <span class="text-base">rating</span></h2>
+            </div>
+        </div>
+        <div class="group relative">
+            <img class="rounded-xl h-96 w-full cursor-pointer brightness-50 hover:brightness-100" src="https://www.lottehotel.com/content/dam/lotte-hotel/global/common/company/yangon-hotel.jpg">
+            <div class="absolute block group-hover:hidden bottom-8 left-8">
+                <h1 class="text-2xl text-emerald-400">Lotte Hotel</h1>
+                <h2 class="text-2xl text-white"><span class="fa fa-star text-amber-500 me-2"></span>4.5 <span class="text-base">rating</span></h2>
+            </div>
+        </div>
+    </div>
+</div> {% endblock %} {% block scripts %}
+<script>
+</script> {% endblock %}
