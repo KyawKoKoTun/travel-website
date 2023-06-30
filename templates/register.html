@@ -1,1 +1,8 @@
-{% extends "base.html" %} {% block content %} {% endblock %} {% block script %} {% endblock %}
+{% extends "base.html" %} {% block content %}
+<div>
+    <form>
+        <input type="text" placeholder="email" name="email" required>
+        <input type="password" placeholder="password" name="password" required>
+        <button>Register</button>
+    </form>
+</div> {% endblock %} {% block script %} {% endblock %}
