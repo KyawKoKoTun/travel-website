@@ -2,3 +2,4 @@ flask
 gunicorn
 flask-session
 flask-sqlalchemy
+flask-admin

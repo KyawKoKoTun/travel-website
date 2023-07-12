@@ -1,8 +1,12 @@
 {% extends "base.html" %} {% block content %}
-<div>
+<div class="shadow-md my-12 p-12 w-96 mx-auto bg-white rounded-xl">
     <form>
-        <input type="text" placeholder="email" name="email" required>
-        <input type="password" placeholder="password" name="password" required>
-        <button>Register</button>
+        <h1 class="text-emerald-500 mb-8 font-bold text-2xl">Register</h1>
+        <input class="block w-full mb-4 px-4 py-2 bg-stone-200" type="text" placeholder="email" name="email" required>
+        <input class="block w-full mb-4 px-4 py-2 bg-stone-200" type="password" placeholder="password" name="password" required>
+        <button class="rounded-xl block mt-8 bg-emerald-600 hover:bg-emerald-400 px-8 py-2 text-white ">Register</button>
+        <p class="mt-8">Already have an account?
+            <p class="text-emerald-600 cursor-pointer" onclick="window.open('/login', '_self')">Login now!</p>
+        </p>
     </form>
 </div> {% endblock %} {% block script %} {% endblock %}

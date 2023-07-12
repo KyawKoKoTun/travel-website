@@ -11,6 +11,9 @@ class User(db.Model):
     bookings = db.relationship('Booking', backref='user', lazy=True)
     token = db.Column(db.String(100), unique=True)
 
+    def __repr__(self):
+        return self.email
+
 
 class Place(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -24,26 +27,38 @@ class Place(db.Model):
     text2 = db.Column(db.Text)
     text3 = db.Column(db.Text)
     text4 = db.Column(db.Text)
-    reachable = db.relationship('Reachable', backref='place', lazy=True)
+    history = db.Column(db.Text)
+    facts = db.relationship('Fact', backref='place', lazy=True)
     hotels = db.relationship('Hotel', backref='place', lazy=True)
     attractions = db.relationship('Attraction', backref='place', lazy=True)
+    plane = db.Column(db.Text, nullable=True)
+    bus = db.Column(db.Text, nullable=True)
+    train = db.Column(db.Text, nullable=True)
+    ship = db.Column(db.Text, nullable=True)
+
+    def __repr__(self):
+        return self.name
 
 
-class Reachable(db.Model):
+class Fact(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(100))
     place_id = db.Column(db.Integer, db.ForeignKey('place.id'), nullable=False)
-    description = db.Column(db.Text)
-    icon = db.Column(db.String(1))
+    text = db.Column(db.Text)
+
 
 
 class Hotel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    place_id = db.Column(db.Integer, db.ForeignKey('place.id'), nullable=False)
+    price = db.Column(db.Integer)
     name = db.Column(db.String(100))
     rating = db.Column(db.Integer)
     description = db.Column(db.Text)
     image = db.Column(db.String(200))
     bookings = db.relationship('Booking', backref='hotel', lazy=True)
+
+    def __repr__(self):
+        return self.name
 
 
 class Booking(db.Model):
@@ -55,18 +70,24 @@ class Booking(db.Model):
 
 class Attraction(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    image = db.Column(db.String(200))
-    place_id = db.Column(db.Integer, db.ForeignKey('place.id'), nullable=False)
+    place_id = db.Column(db.Integer, db.ForeignKey('place.id'))
+    title = db.Column(db.String(100))
+    image1 = db.Column(db.String(100))
+    image2 = db.Column(db.String(100))
+    image3 = db.Column(db.String(100))
     text1 = db.Column(db.Text)
     text2 = db.Column(db.Text)
+    text3 = db.Column(db.Text)
+    text4 = db.Column(db.Text)
 
 
 class Blog(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100))
-    image1 = db.Column(db.String(200))
-    image2 = db.Column(db.String(200))
-    image3 = db.Column(db.String(200))
+    to_do = db.Column(db.Boolean)
+    image1 = db.Column(db.String(100))
+    image2 = db.Column(db.String(100))
+    image3 = db.Column(db.String(100))
     text1 = db.Column(db.Text)
     text2 = db.Column(db.Text)
     text3 = db.Column(db.Text)
