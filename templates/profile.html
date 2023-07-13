@@ -3,20 +3,22 @@
     <div class="grid grid-cols-6 gap-4">
         <div class="fa fa-user text-4xl md:text-8xl"></div>
         <div class="col-span-5 grid grid-cols-1 gap-2">
-            <h1 class="text-2xl font-bold text-emerald-600">Kyaw Ko Ko Tun</h1>
-            <p class="text-stone-400">kyawkokotun888@gmail.com</p>
+            <h1 class="text-2xl font-bold text-emerald-600">{{signed_in.name}}</h1>
+            <p class="text-stone-400">{{signed_in.email}}</p>
         </div>
     </div>
 </div>
 <div class="rounded-xl my-8 p-8 bg-white shadow-md">
     <h1 class="text-xl font-bold mb-8">Hotel Bookings <span class="fa fa-hotel text-emerald-600"></span></h1>
+    {% for booking, hotel in bookings %}
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         <div class="rounded-xl bg-white grid grid-cols-1 gap-4">
-            <img src="https://www.usatoday.com/gcdn/-mm-/05b227ad5b8ad4e9dcb53af4f31d7fbdb7fa901b/c=0-64-2119-1259/local/-/media/USATODAY/USATODAY/2014/08/13/1407953244000-177513283.jpg" class="w-full">
+            <img src="{{hotel.image}}" class="w-full">
             <div class="">
-                <p class="text-emerald-600 font-bold">Hotel name</p>
-                <p class="text-stone-400 mt-2"><span class="text-emerald-500 fa fa-calendar"></span> 25 Dec 2023</p>
+                <p class="text-emerald-600 font-bold">{{hotel.name}}}</p>
+                <p class="text-stone-400 mt-2"><span class="text-emerald-500 fa fa-calendar"></span>{{booking.date}}</p>
             </div>
         </div>
     </div>
+    {% endfor %}
 </div> {% endblock %} {% block script %} {% endblock %}

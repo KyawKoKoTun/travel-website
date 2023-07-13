@@ -3,7 +3,20 @@ from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
 
-class User(db.Model):
+class Query:
+    @classmethod
+    def queryOne(cls, **kwargs):
+        try:
+            return cls.query.filter_by(**kwargs)[0]
+        except:
+            return None
+    
+    @classmethod
+    def queryAll(cls, **kwargs):
+        return cls.query.filter_by(**kwargs).all()
+
+
+class User(db.Model, Query):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50))
     email = db.Column(db.String(100), unique=True)
@@ -15,7 +28,7 @@ class User(db.Model):
         return self.email
 
 
-class Place(db.Model):
+class Place(db.Model, Query):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100))
     location = db.Column(db.String(100))
@@ -27,12 +40,14 @@ class Place(db.Model):
     text2 = db.Column(db.Text)
     text3 = db.Column(db.Text)
     text4 = db.Column(db.Text)
+    fact1 = db.Column(db.Text)
+    fact2 = db.Column(db.Text)
+    fact3 = db.Column(db.Text)
     history = db.Column(db.Text)
-    facts = db.relationship('Fact', backref='place', lazy=True)
     hotels = db.relationship('Hotel', backref='place', lazy=True)
     attractions = db.relationship('Attraction', backref='place', lazy=True)
     plane = db.Column(db.Text, nullable=True)
-    bus = db.Column(db.Text, nullable=True)
+    car = db.Column(db.Text, nullable=True)
     train = db.Column(db.Text, nullable=True)
     ship = db.Column(db.Text, nullable=True)
 
@@ -40,19 +55,14 @@ class Place(db.Model):
         return self.name
 
 
-class Fact(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    place_id = db.Column(db.Integer, db.ForeignKey('place.id'), nullable=False)
-    text = db.Column(db.Text)
 
-
-
-class Hotel(db.Model):
+class Hotel(db.Model, Query):
     id = db.Column(db.Integer, primary_key=True)
     place_id = db.Column(db.Integer, db.ForeignKey('place.id'), nullable=False)
     price = db.Column(db.Integer)
     name = db.Column(db.String(100))
-    rating = db.Column(db.Integer)
+    location = db.Column(db.String(200))
+    rating = db.Column(db.Float)
     description = db.Column(db.Text)
     image = db.Column(db.String(200))
     bookings = db.relationship('Booking', backref='hotel', lazy=True)
@@ -61,14 +71,14 @@ class Hotel(db.Model):
         return self.name
 
 
-class Booking(db.Model):
+class Booking(db.Model, Query):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    date = db.Column(db.Date)
+    date = db.Column(db.String(100))
     hotel_id = db.Column(db.Integer, db.ForeignKey('hotel.id'))
 
 
-class Attraction(db.Model):
+class Attraction(db.Model, Query):
     id = db.Column(db.Integer, primary_key=True)
     place_id = db.Column(db.Integer, db.ForeignKey('place.id'))
     title = db.Column(db.String(100))
@@ -81,7 +91,7 @@ class Attraction(db.Model):
     text4 = db.Column(db.Text)
 
 
-class Blog(db.Model):
+class Blog(db.Model, Query):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100))
     to_do = db.Column(db.Boolean)

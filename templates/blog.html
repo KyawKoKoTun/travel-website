@@ -1,7 +1,7 @@
 {% extends "base.html" %} {% block content %}
 
 <div class="mt-8 -mb-8 p-8 rounded-t-xl bg-white shadow-md">
-    <h1 class="text-xl md:text-2xl font-bold text-emerald-500">Discover Myanmar’s History, Nature and Culture</h1>
+    <h1 class="text-xl md:text-2xl font-bold text-emerald-500">{{blog.title}}</h1>
 </div>
 <main class="grid mt-8 rounded-b-xl h-[400px] w-full place-content-center bg-gray-900">
     <div x-data="imageSlider" class="relative mx-auto max-w-2xl overflow-hidden rounded-md bg-gray-100 p-2 sm:p-4">
@@ -29,36 +29,34 @@
 
 <div class="my-8 rounded-xl bg-white shadow-md p-8 ">
     <p class="my-6 ">
-        With the Ayeyarwaddy river running through it, the gateway to the Delta and the ocean, Myanmar is a feast for those who love nature and fascinating, dynamic Asian cities. Let’s look at the history, culture, fashion, food, and the best places to visit
-        in Myanmar. A British colony for over a hundred years, a battleground between the British and Japanese during the Second World War, and a country that’s survived four invasions from China throughout its history. Myanmar is certainly a country
-        that’s seen its fair share of turbulence and, even today, with its newfound freedom and democracy, politics is generally not discussed. Immediately, you’ll notice some unique things about the country; heritage is still incredibly pertinent throughout
-        Myanmar. The traditional dress longyi is still commonly worn by men and women, even in the cities. It resembles a skirt and can be worn in a number of ways. The women (and men up until a certain age) paint their faces with the vibrant yellow ‘thanaka’,
-        a tree bark that protects against the sun and improves skin tone.
+        {{blog.text1}}
     </p>
     <p class="my-6 ">
-        Yangon, (formerly known as Rangoon) doesn’t at first strike you as a particularly charming city. Although, as you drive to the centre from the airport and you spot the striking Shwedagon Pagoda on your right, you’ll quickly get an inkling of what’s to
-        come. Yangon is certainly a place that unfurls as you dig a little deeper, making it one of the best places to visit in Myanmar. Here are some of my favourite things to get up to while in Yangon, one of the best places to visit in Myanmar.
+        {{blog.text2}}
     </p>
     <p class="my-6 ">
-        One of the best ways to get to know Yangon is on foot and above all, I’d highly recommend starting your trip with a heritage tour of the city hosted by the Yangon Heritage Trust. They do a lot of work to protect these old buildings from demolition (your
-        tour fee helps them out with that) and hold a wealth of knowledge that allows you to dig deep into the history of the city. There are over 2000 heritage buildings in the city and this is where the magic of Yangon lies, particularly as many of
-        them are overgrown with plants or are still in the original state they were 100 years ago.Yangon lies, particularly as many of them are overgrown with plants or are still in the original state they were 100 years ago.
+        {{blog.text3}}
+    </p>
+    <p class="my-6 ">
+        {{blog.text4}}
     </p>
 </div>
 <hr>
 </hr>
 
 <div class="my-8 shadow-md rounded-xl bg-white p-8">
-    <h1 class="mb-12 text-xl font-bold">More Blogs</h1>
+    <h1 class="mb-12 text-xl font-bold">{% if not attraction %}More Blogs{% else %}More Attractions{% endif %}</h1>
+    {% for blog in blogs %}
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         <div class="rounded-xl bg-white grid grid-cols-1 gap-4">
-            <img src="https://sanctum-inle-resort.com/wp-content/uploads/2015/11/Sanctum_Inle_Myanmar_Flower_Dendrobium_lindleyi.jpg" class="w-full">
+            <img src="{{blog.image1}}" class="w-full">
             <div class="">
-                <p class="text-emerald-600">Seasonal Flowers in Myanmar Calendar</p>
+                <p class="text-emerald-600">{{blog.tltle}}</p>
             </div>
-            <button class="px-8 py-2 bg-emerald-600 hover:bg-emerald-400 text-white">Read More</button>
+            <button onclick="window.open('{% if not attraction %}/blog/{{blog.id}}{% else %}/attraction/{{blog.id}}{% endif %}', '_self')" class="px-8 py-2 bg-emerald-600 hover:bg-emerald-400 text-white">Read More</button>
         </div>
     </div>
+    {% endfor %}
 </div>
 
 {% endblock %} {% block script %}
@@ -67,8 +65,9 @@
         Alpine.data("imageSlider", () => ({
             currentIndex: 1,
             images: [
-                "https://media.worldnomads.com/Explore/myanmar/inle-lake-fishermen-istock.jpg",
-                "https://static.toiimg.com/photo/62084129.cms",
+                "{{blog.image1}}",
+                "{{blog.image2}}",
+                "{{blog.image3}}"
             ],
             previous() {
                 if (this.currentIndex > 1) {

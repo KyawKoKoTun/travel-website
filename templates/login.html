@@ -1,10 +1,13 @@
 {% extends "base.html" %} {% block content %}
 <div class="shadow-md my-12 p-12 w-96 mx-auto bg-white rounded-xl">
-    <form>
+    <form action="/login" method="post">
         <h1 class="text-emerald-500 mb-8 font-bold text-2xl">Login</h1>
-        <input class="block w-full mb-4 px-4 py-2 bg-stone-200" type="text" placeholder="email" name="email" required>
-        <input class="block w-full mb-4 px-4 py-2 bg-stone-200" type="password" placeholder="password" name="password" required>
-        <button class="rounded-xl block mt-8 bg-emerald-600 hover:bg-emerald-400 px-8 py-2 text-white ">Login</button>
+        <input class="block rounded-xl border-0 w-full mb-4 px-4 py-2 bg-stone-200" type="text" placeholder="Email" name="email" required>
+        <input class="block rounded-xl border-0  w-full mb-4 px-4 py-2 bg-stone-200" type="password" placeholder="Password" name="password" required>
+        <button class="rounded-xl block mt-8 bg-emerald-600 hover:bg-emerald-400 px-8 py-2 text-white ">Login</button> {% if message %}
+        <div class="mt-4 px-8 py-2 rounded-xl bg-red-100 text-red-600">
+            <p>{{message}} <span class="fa fa-warning"></span></p>
+        </div>{% endif %}
         <p class="mt-8">Don't have an account?
             <p class="text-emerald-600 cursor-pointer" onclick="window.open('/register', '_self')">Register one!</p>
         </p>

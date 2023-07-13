@@ -21,7 +21,7 @@
 <body style="background-color: #f1f1f1; font-family: Poppins;" class="text-zinc-700">
     <div class="sticky top-0 z-50">
         <div class="py-4 px-8 md:px-12 lg:px-20 flex justify-between items-center shadow-md from-emerald-600 via-teal-600 to-green-700 bg-gradient-to-r">
-            <h1 class="font-semibold text-lg md:text-xl text-teal-100 font-sans">AUTHENTIC MYANMAR</h1>
+            <h1 onclick="window.open('/', '_self')" class="cursor-pointer font-semibold text-lg md:text-xl text-teal-100 font-sans">AUTHENTIC MYANMAR</h1>
             <div class="rounded-2xl py-2 px-4 bg-teal-500 hidden lg:block text-base">
                 <button onclick="window.open('/', '_self')" class="cursor-pointer mx-3 text-white hover:text-zinc-200  font-bold">Home <span class="ms-1 fa fa-home"></span></button>
                 <button onclick="window.open('/places', '_self')" class="cursor-pointer mx-3 text-white hover:text-zinc-200  font-bold">Places to go <span class="ms-1 fa fa-star"></span></button>
@@ -47,9 +47,12 @@
                 <button onclick="window.open('/blogs', '_self')" class="block mt-4 cursor-pointer text-white hover:text-zinc-200  font-bold">Blogs <span class="ms-1 fa-solid fa-pen"></span></button>
             </div>
             <div class="mt-2">
+                {% if not signed_in %}
                 <button onclick="window.open('/login', '_self')" class="block mt-4 cursor-pointer me-6 text-white hover:text-zinc-200 font-bold">Login</button>
-                <button onclick="window.open('/register', '_self')" class="block mt-4 bg-zinc-100 hover:bg-zinc-200 cursor-pointer px-4 py-2 font-bold rounded-2xl">Sign Up</button>
-            </div>
+                <button onclick="window.open('/register', '_self')" class="block mt-4 bg-zinc-100 hover:bg-zinc-200 cursor-pointer px-4 py-2 font-bold rounded-2xl">Sign Up</button> {% else %}
+
+                <button onclick="window.open('/profile', '_self')" class="block mt-4 bg-zinc-100 hover:bg-zinc-200 cursor-pointer px-4 py-2 font-bold rounded-2xl">Profile <span class="fa fa-user"></span></button> {% endif %}</div>
+            <button onclick="window.open('/logout', '_self')" class="block mt-4 cursor-pointer me-6 text-white hover:text-zinc-200 font-bold">Logout</button>
         </div>
     </div>
     {% block video %} {% endblock %}
@@ -73,14 +76,14 @@
             <ul class="mt-12">
                 <li class="mb-6 text-zinc-500">Info</li>
                 <li class="mt-2 cursor-pointer" onclick="window.open('/visa', '_self')">Applying Visa</li>
-                <li class="mt-2 cursor-pointer" onclick="window.open('/how-to-travel', '_self')">How to travel</li>
+                <!-- <li class="mt-2 cursor-pointer" onclick="window.open('/how-to-travel', '_self')">How to travel</li> -->
             </ul>
 
             <ul class="mt-12">
                 <li class="mb-6 text-zinc-500">Blogs</li>
-                <li class="mt-2 cursor-pointer">Best hotels in Bagan</li>
-                <li class="mt-2 cursor-pointer">Food you shouldn't miss in Myanmar</li>
-                <li class="mt-2 cursor-pointer">Cultural Places</li>
+                {% for blog in blogs %}
+                <li class="mt-2 cursor-pointer" onclick="window.open('/blog/{{blog.id}}')">{{blog.name}}</li>
+                {% endfor %}
             </ul>
         </div>
     </div>

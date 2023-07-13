@@ -3,3 +3,4 @@ gunicorn
 flask-session
 flask-sqlalchemy
 flask-admin
+validate-email-address
