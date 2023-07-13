@@ -102,7 +102,7 @@ def login():
     else:
         email = request.form['email']
         password = request.form['password']
-        user = User.queryOne(email=email, password=password)
+        user = User.queryOne(email=email, password=generate_sha256_hash(password))
         if user:
             session['token'] = user.token
             return redirect('/')
@@ -118,13 +118,13 @@ def register():
         name = request.form['name']
         email = request.form['email']
         password = request.form['password']
-        user = User.queryOne(email=email, password=password)
+        user = User.queryOne(email=email)
         if not user:
             if validate_email(email):
                 if len(password) > 4:
                     token = generate_sha256_hash(email)
                     user = User(name=name, email=email,
-                                password=password, token=token)
+                                password=generate_sha256_hash(password), token=token)
                     db.session.add(user)
                     db.session.commit()
                     session['token'] = token
