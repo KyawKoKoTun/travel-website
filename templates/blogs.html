@@ -6,9 +6,16 @@
         <div class="rounded-xl bg-white grid grid-cols-1 gap-4">
             <img src="{{blog.image1}}" class="w-full">
             <div class="">
+                {% if blog.title %}
                 <p class="text-emerald-600">{{blog.title}}</p>
+                {% else %}
+                <p class="text-emerald-600">{{blog.name}}</p>
+                {% endif %}
             </div>
-            <button onclick="window.open('/blog/{{blog.id}}', '_self')" class="px-8 py-2 bg-emerald-600 hover:bg-emerald-400 text-white">Read More</button>
+            {% if blog.title %}
+            <button onclick="window.open('/blog/{{blog.id}}', '_self')" class="px-8 py-2 bg-emerald-600 hover:bg-emerald-400 text-white">Read More</button> {% else %}
+            <button onclick="window.open('/place/{{blog.id}}', '_self')" class="px-8 py-2 bg-emerald-600 hover:bg-emerald-400 text-white">Read More</button> {% endif %}
+
         </div>
     </div>
     {% endfor %}

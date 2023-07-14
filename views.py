@@ -8,8 +8,7 @@ def resource_not_found(e):
 
 @app.route('/')
 def main():
-    blogs = Blog.queryAll()[:5]
-    return render('home.html', blogs=blogs)
+    return render('home.html')
 
 
 @app.route('/visa')
@@ -26,7 +25,9 @@ def how_to_travel():
 def place(id):
     place = Place.queryOne(id=id)
     if place:
-        return render('place.html', place=place)
+        attractions = Attraction.queryAll(place_id=place.id)
+        hotels = Hotel.queryAll(place_id=place.id)
+        return render('place.html', place=place, attractions=attractions, hotels=hotels)
     else:
         return render_template('404.html')
 
@@ -35,7 +36,9 @@ def place(id):
 def place_by_name(name):
     place = Place.queryOne(name=name)
     if place:
-        return render('place.html', place=place)
+        attractions = Attraction.queryAll(place_id=place.id)
+        hotels = Hotel.queryAll(place_id=place.id)
+        return render('place.html', place=place, attractions=attractions, hotels=hotels)
     else:
         return render_template('404.html')
 
@@ -43,7 +46,7 @@ def place_by_name(name):
 @app.route('/places')
 def places():
     places = Place.queryAll()
-    return render('blogs.html', title='Places to visit in Myanmar', places=places)
+    return render('blogs.html', title='Places to visit in Myanmar', blogs=places)
 
 
 @app.route('/blog/<int:id>')
@@ -68,7 +71,7 @@ def attraction():
 
 @app.route('/blogs')
 def blogs():
-    blogs = Blog.queryAll()
+    blogs = Blog.queryAll(to_do=False)
     return render('blogs.html', title='Blogs about Myanmar', blogs=blogs)
 
 
@@ -84,10 +87,10 @@ def hotel(id):
     return render('hotel.html', hotel=hotel)
 
 
-@app.route('/book/<int:id>/<date>')
-def book(id, date):
+@app.route('/book/<int:id>/<month>/<day>/<year>')
+def book(id, month, day, year):
     booking = Booking(user_id=token_to_user(
-        session['token']).id, hotel_id=id, date=date)
+        session['token']).id, hotel_id=id, date=f"{day} {month} {year}")
     db.session.add(booking)
     db.session.commit()
     return jsonify({
@@ -151,7 +154,7 @@ def profile():
         for booking in Booking.queryAll():
             if booking.user_id == user.id:
                 bookings.append(
-                    [bookings, Hotel.queryOne(id=booking.hotel_id)])
+                    [booking, Hotel.queryOne(id=booking.hotel_id)])
         return render('profile.html', bookings=bookings)
     else:
         return redirect('/login')

@@ -39,22 +39,22 @@
     <div class="mt-6">
         <h1 class="text-2xl mb-8">How to get there</h1>
         {% if place.plane %}
-        <div class="my-4 flex flex-row justify-between items-center">
+        <div class="my-4 flex flex-row justify-start items-center">
             <span class="fa fa-plane text-4xl text-emerald-600"></span>
             <p class="px-4">{{place.plane}}</p>
             {% endif %}
         </div>
         {% if place.car %}
-        <div class="my-4 flex flex-row justify-between items-center">
+        <div class="my-4 flex flex-row justify-start items-center">
             <span class="fa fa-car text-4xl text-emerald-600"></span>
             <p class="px-4">{{place.car}}</p>
         </div>
         {% endif %} {% if place.ship %}
-        <div class="my-4 flex flex-row justify-between items-center">
+        <div class="my-4 flex flex-row justify-start items-center">
             <span class="fa fa-ship text-4xl text-emerald-600"></span>
             <p class="px-4">{{place.ship}}</p>
         </div>{% endif %} {% if place.train %}
-        <div class="my-4 flex flex-row justify-between items-center">
+        <div class="my-4 flex flex-row justify-start items-center">
             <span class="fa fa-train text-4xl text-emerald-600"></span>
             <p class="px-4">{{place.train}}</p>
         </div>{% endif %}
@@ -71,7 +71,7 @@
         <div id="attractions-content">
             <h2 class="text-2xl font-semibold my-6">Top Attractions</h2>
             <div class="my-6 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols">
-                {% for attraction in place.attractions %}
+                {% for attraction in attractions %}
                 <div>
                     <img class="h-52 object-cover" src="{{attraction.image1}}">
                     <p class="text-xl mt-4">{{attraction.name}}</p>
@@ -84,11 +84,11 @@
             <h2 class="text-2xl font-semibold my-6">Hotels</h2>
             <p>Here are best hotels to stay in Bagan.</p>
             <div class="my-6 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols">
-                {% for hotel in place.hotels %}
+                {% for hotel in hotels %}
                 <div>
                     <img class="h-52 object-cover" src="{{hotel.image}}">
                     <p class="text-xl mt-4">{{hotel.name}}</p>
-                    <button onclick="window.open('/hotel/{{hotel.id}}')" class="px-8 py-2 bg-emerald-600 hover:bg-emerald-500 text-white mt-4 rounded-md">Book Now</button>
+                    <button onclick="window.open('/hotel/{{hotel.id}}', '_self')" class="px-8 py-2 bg-emerald-600 hover:bg-emerald-500 text-white mt-4 rounded-md">Book Now</button>
                 </div>
                 {% endfor %}
             </div>

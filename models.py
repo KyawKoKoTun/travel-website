@@ -13,7 +13,7 @@ class Query:
     
     @classmethod
     def queryAll(cls, **kwargs):
-        return cls.query.filter_by(**kwargs).all()
+        return list(cls.query.filter_by(**kwargs).all())
 
 
 class User(db.Model, Query):

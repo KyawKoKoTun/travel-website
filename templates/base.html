@@ -81,8 +81,8 @@
 
             <ul class="mt-12">
                 <li class="mb-6 text-zinc-500">Blogs</li>
-                {% for blog in blogs %}
-                <li class="mt-2 cursor-pointer" onclick="window.open('/blog/{{blog.id}}')">{{blog.name}}</li>
+                {% for blog in blogs_foot %}
+                <li class="mt-2 cursor-pointer" onclick="window.open('/blog/{{blog.id}}', '_self')">{{blog.title}}</li>
                 {% endfor %}
             </ul>
         </div>

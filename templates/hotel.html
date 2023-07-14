@@ -82,7 +82,7 @@
             document.getElementById('spinner').style.display = 'inline'
             fetch('/book/{{hotel.id}}/' + document.getElementById('date').value).then(response => response.text()).then(data => {
                 console.log(data)
-                window.open('/profile', '_self')
+                    // window.open('/profile', '_self')
             })
         } else {
             window.open('/login', '_self')
