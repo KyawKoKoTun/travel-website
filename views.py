@@ -47,8 +47,8 @@ def places():
 
 
 @app.route('/blog/<int:id>')
-def blog():
-    blog = Blog.queryOne()
+def blog(id):
+    blog = Blog.queryOne(id=id)
     blogs = []
     for b in Blog.queryAll():
         if b.to_do == blog.to_do and b.title != blog.title:
