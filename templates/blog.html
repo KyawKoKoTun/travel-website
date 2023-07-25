@@ -43,17 +43,38 @@
 </div>
 <hr>
 </hr>
-
-<div class="my-8 shadow-md rounded-xl bg-white p-8">
-    <h1 class="mb-12 text-xl font-bold">{% if not attraction %}More Blogs{% else %}More Attractions{% endif %}</h1>
-    {% for blog in blogs %}
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-        <div class="rounded-xl bg-white grid grid-cols-1 gap-4">
-            <img src="{{blog.image1}}" class="w-full">
-            <div class="">
-                <p class="text-emerald-600">{{blog.tltle}}</p>
+<div class="my-12">
+    <form action="/{% if attraction %}attraction{% else %}blog{% endif %}/{{blog.id}}" method="post">
+        <textarea class="block rounded-xl border-0 w-full mb-4 px-4 py-2 bg-stone-200" type="text" placeholder="Write a comment" name="text" required></textarea>
+        <button class="rounded-xl block mt-8 bg-emerald-600 hover:bg-emerald-400 px-8 py-2 text-white ">Comment</button>
+    </form>
+    <div class="mt-8">
+        <h1 class="mb-4 text-xl font-bold"><span class="text-emerald-500 me-4 text-3xl">{{comments | length}}</span> Comments</h1>
+        {% for name, text in comments %}
+        <div class="bg-white mb-4 rounded-xl shadow-sm p-8">
+            <div class="flex flex-row justify-start items-center">
+                <div class="me-8 fa fa-user text-xl text-emerald-500"></div>
+                <div>
+                    <h1 class="text-lg mb-2 font-bold">{{name}}</h1>
+                    <p>{{text}}</p>
+                </div>
             </div>
-            <button onclick="window.open('{% if not attraction %}/blog/{{blog.id}}{% else %}/attraction/{{blog.id}}{% endif %}', '_self')" class="px-8 py-2 bg-emerald-600 hover:bg-emerald-400 text-white">Read More</button>
+        </div> {% endfor %}
+    </div>
+</div>
+<hr>
+</hr>
+
+<div class=" my-8 shadow-md rounded-xl bg-white p-8 ">
+    <h1 class="mb-12 text-xl font-bold ">{% if not attraction %}More Blogs{% else %}More Attractions{% endif %}</h1>
+    {% for blog in blogs %}
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 ">
+        <div class="rounded-xl bg-white grid grid-cols-1 gap-4 ">
+            <img src="{{blog.image1}} " class="w-full ">
+            <div class=" ">
+                <p class="text-emerald-600 ">{{blog.tltle}}</p>
+            </div>
+            <button onclick="window.open( '{% if not attraction %}/blog/{{blog.id}}{% else %}/attraction/{{blog.id}}{% endif %}', '_self') " class="px-8 py-2 bg-emerald-600 hover:bg-emerald-400 text-white ">Read More</button>
         </div>
     </div>
     {% endfor %}

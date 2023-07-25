@@ -11,5 +11,7 @@ admin.add_view(ModelView(Hotel, db.session))
 admin.add_view(ModelView(Attraction, db.session))
 admin.add_view(ModelView(Blog, db.session))
 admin.add_view(ModelView(Booking, db.session))
+admin.add_view(ModelView(Comment, db.session))
+
 
 

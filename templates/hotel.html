@@ -8,7 +8,7 @@
             <h2 class="mt-2 text-white"><span class="fa fa-star text-xl text-amber-400"></span> 4.5</h2>
         </div>
     </div>
-    <img class="w-full object-cover h-auto lg:h-[400px]" src="https://static.independent.co.uk/2023/03/24/09/Best%20New%20York%20boutique%20hotels.jpg?width=1200">
+    <img class="w-full object-cover h-auto lg:h-[400px]" src="{{hotel.image}}">
 </div> {% endblock %} {% block content %}
 <div class="bg-white w-full md:w-96 mx-auto p-8 mb-8 rounded-b-xl shadow-md">
     <div>
@@ -82,7 +82,7 @@
             document.getElementById('spinner').style.display = 'inline'
             fetch('/book/{{hotel.id}}/' + document.getElementById('date').value).then(response => response.text()).then(data => {
                 console.log(data)
-                    // window.open('/profile', '_self')
+                window.open('/profile', '_self')
             })
         } else {
             window.open('/login', '_self')

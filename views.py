@@ -6,6 +6,7 @@ from utils import *
 def resource_not_found(e):
     return render_template('404.html')
 
+
 @app.route('/')
 def main():
     return render('home.html')
@@ -49,24 +50,50 @@ def places():
     return render('blogs.html', title='Places to visit in Myanmar', blogs=places)
 
 
-@app.route('/blog/<int:id>')
+@app.route('/blog/<int:id>', methods=['GET', 'POST'])
 def blog(id):
-    blog = Blog.queryOne(id=id)
-    blogs = []
-    for b in Blog.queryAll():
-        if b.to_do == blog.to_do and b.title != blog.title:
-            blogs.append(b)
-    return render('blog.html', blog=blog, blogs=blogs)
+    if request.method=='GET':
+        blog = Blog.queryOne(id=id)
+        blogs = []
+        comments = []
+        for b in Blog.queryAll():
+            if b.to_do == blog.to_do and b.title != blog.title:
+                blogs.append(b)
+        for comment in blog.comments:
+            comments.append(
+                (User.queryOne(id=comment.user_id).name, comment.text))
+        return render('blog.html', blog=blog, blogs=blogs, comments=list(comments.__reversed__()))
+    else:
+        user = token_to_user(session['token'])
+        text = request.form['text']
+        comment = Comment(user_id=user.id, text=text, blog_id=id)
+        db.session.add(comment)
+        db.session.commit()
+        db.session.close_all()
+        return redirect(f'/blog/{int(id)}')
 
 
-@app.route('/attraction')
-def attraction():
-    attraction = Attraction.queryOne()
-    attractions = []
-    for a in Attraction.queryAll():
-        if a.place_id == attraction.place_id and a.name != attraction.name:
-            attractions.append(a)
-    return render('blog.html', blog=attraction, blogs=attractions, attractions=True)
+@app.route('/attraction/<int:id>', methods=['GET', 'POST'])
+def attraction(id):
+    if request.method == 'GET':
+        attraction = Attraction.queryOne(id=id)
+        attractions = []
+        comments = []
+        for a in Attraction.queryAll():
+            if a.place_id == attraction.place_id and a.title != attraction.title:
+                attractions.append(a)
+        for comment in attraction.comments:
+            comments.append(
+                (User.queryOne(id=comment.user_id).name, comment.text))
+        return render('blog.html', blog=attraction, blogs=attractions, attraction=True, comments=list(comments.__reversed__()))
+    else:
+        user = token_to_user(session['token'])
+        text = request.form['text']
+        comment = Comment(user_id=user.id, text=text, attraction_id=id)
+        db.session.add(comment)
+        db.session.commit()
+        db.session.close_all()
+        return redirect(f'/attraction/{int(id)}')
 
 
 @app.route('/blogs')
@@ -158,3 +185,15 @@ def profile():
         return render('profile.html', bookings=bookings)
     else:
         return redirect('/login')
+    
+
+@app.route('/map')
+def map():
+    places = []
+    for place in Place.queryAll():
+        places.append((place.name, place.lat, place.lng))
+    for attraction in Attraction.queryAll():
+        places.append((attraction.title, attraction.lat, attraction.lng))
+    for hotel in Hotel.queryAll():
+        places.append((hotel.name, hotel.lat, hotel.lng))
+    return render('map.html', places=places)

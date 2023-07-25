@@ -74,7 +74,7 @@
                 {% for attraction in attractions %}
                 <div>
                     <img class="h-52 object-cover" src="{{attraction.image1}}">
-                    <p class="text-xl mt-4">{{attraction.name}}</p>
+                    <p class="text-xl mt-4">{{attraction.title}}</p>
                     <button onclick="window.open('/attraction/{{attraction.id}}', '_self')" class="px-8 py-2 bg-emerald-600 hover:bg-emerald-500 text-white mt-4 rounded-md">Read More</button>
                 </div>
                 {% endfor %}

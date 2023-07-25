@@ -1,0 +1,38 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.css" />
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+
+<body style='border:0; margin: 0'>
+    <div id='map'></div>
+    <div class="formBlock">
+        <form id="form">
+            <a class="underline text-emerald-500 my-2" href="/">Back to home</a>
+            <select name="start" class="input" id="start">
+                <option hidden>Choose starting point</option>
+                {% for name, lat, lng in places %}
+                <option value="{{lat}},{{lng}}">{{name}}</option>
+                {% endfor %}
+            </select>
+            <select name="end" class="input" id="destination">
+                <option hidden>Choose ending point</option>
+                {% for name, lat, lng in places %}
+                <option value="{{lat}},{{lng}}">{{name}}</option>
+                {% endfor %}
+            </select>
+            <button class="mt-4 px-8 py-2 rounded-xl text-lg text-white bg-emerald-600 hover:bg-emerald-500" type="submit">Get Directions</button>
+        </form>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/leaflet.js"></script>
+    <script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-map.js?key=oFfP1jOYMVsV9oItjSAj6udut58UojeM"></script>
+    <script src="https://www.mapquestapi.com/sdk/leaflet/v2.2/mq-routing.js?key=oFfP1jOYMVsV9oItjSAj6udut58UojeM"></script>
+    <script src="static/app.js"></script>
+</body>
+
+</html>

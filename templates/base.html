@@ -57,6 +57,12 @@
     </div>
     {% block video %} {% endblock %}
     <div class="px-8 md:px-12 lg:px-20 ">
+        <div onclick="window.open('/map', '_self')" class="bg-emerald-500 my-8 items-center cursor-pointer text-white hover:bg-emerald-400 p-8 flex flex-row flex-start">
+            <div class="fa fa-map-location-dot text-4xl me-8"></div>
+            <div>
+                <p>Try our new feature, finding routes!</p>
+            </div>
+        </div>
         {% block content %} {% endblock %}
     </div>
     <div class=" px-8 md:px-12 lg:px-20 py-12 bg-slate-900">
