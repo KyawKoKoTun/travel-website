@@ -1,8 +1,8 @@
 {% extends "base.html" %} {% block content %}
 <div class="my-8 shadow-md rounded-xl bg-white p-8">
     <h1 class="mb-12 text-xl font-bold">{{title}}</h1>
-    {% for blog in blogs %}
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {% for blog in blogs %}
         <div class="rounded-xl bg-white grid grid-cols-1 gap-4">
             <img src="{{blog.image1}}" class="w-full">
             <div class="">
@@ -17,6 +17,6 @@
             <button onclick="window.open('/place/{{blog.id}}', '_self')" class="px-8 py-2 bg-emerald-600 hover:bg-emerald-400 text-white">Read More</button> {% endif %}
 
         </div>
+        {% endfor %}
     </div>
-    {% endfor %}
 </div>{% endblock %} {% block script %} {% endblock %}
