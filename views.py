@@ -182,7 +182,7 @@ def profile():
             if booking.user_id == user.id:
                 bookings.append(
                     [booking, Hotel.queryOne(id=booking.hotel_id)])
-        return render('profile.html', bookings=list(booking.__reversed__()))
+        return render('profile.html', bookings=list(bookings.__reversed__()))
     else:
         return redirect('/login')
     
