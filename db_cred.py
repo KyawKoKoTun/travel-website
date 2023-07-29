@@ -1,0 +1,6 @@
+db_name = 'travel-website'
+db_user = '3tce3owt6nwth2j9nm4l'
+db_password = 'pscale_pw_JFXf90DWZvmVzhg0C0lCRUBMIZKHteYBcNlBjoMka9L'
+db_host = 'aws.connect.psdb.cloud'
+db_port = '3306'
+ssl_ca = '/etc/ssl/certs/ca-certificates.crt'

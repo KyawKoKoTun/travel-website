@@ -1,6 +1,6 @@
-flask
-gunicorn
-flask-session
-flask-sqlalchemy
-flask-admin
+flask==2.2.2
+gunicorn==20.1.0
+flask-session==0.4.0
+flask-sqlalchemy==2.5.1
+flask-admin==1.6.0
 validate-email-address
