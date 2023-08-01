@@ -1,50 +1,62 @@
 import sqlite3
+import mysql.connector
 
-def copy_data(source_db, destination_db):
-    # Connect to the source database
-    source_conn = sqlite3.connect(source_db)
-    source_cursor = source_conn.cursor()
+# SQLite database information
+sqlite_db_file = 'database.sqlite'
 
-    # Connect to the destination database
-    destination_conn = sqlite3.connect(destination_db)
-    destination_cursor = destination_conn.cursor()
+# MySQL database information
+db_name = 'freedb_travel-website'
+db_user = 'freedb_KyawKoKoTun'
+db_password = '7u#YX?&b9%mzbhH'
+db_host = 'sql.freedb.tech'
+db_port = '3306'
 
-    try:
-        # Fetch all tables from the source database
-        source_cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
-        tables = source_cursor.fetchall()
+try:
+    # Connect to the SQLite database
+    sqlite_conn = sqlite3.connect(sqlite_db_file)
+    sqlite_cursor = sqlite_conn.cursor()
 
-        for table in tables:
-            table_name = table[0]
+    # Connect to the MySQL database
+    mysql_conn = mysql.connector.connect(
+        host=db_host,
+        port=db_port,
+        user=db_user,
+        password=db_password,
+        database=db_name
+    )
+    mysql_cursor = mysql_conn.cursor()
 
-            # Fetch all data from each table in the source database
-            source_cursor.execute(f"SELECT * FROM {table_name};")
-            rows = source_cursor.fetchall()
+    # Get a list of table names from the SQLite database
+    sqlite_cursor.execute("SELECT name FROM sqlite_master WHERE type='table';")
+    table_names = [row[0] for row in sqlite_cursor.fetchall()]
 
-            # Get the column names for the CREATE TABLE statement
-            source_cursor.execute(f"PRAGMA table_info({table_name});")
-            columns = source_cursor.fetchall()
-            column_names = ', '.join(column[1] for column in columns)
+    # Loop through each table and copy data to MySQL database
+    for table_name in table_names:
+        # Fetch data from the SQLite table
+        sqlite_cursor.execute(f"SELECT * FROM {table_name};")
+        rows = sqlite_cursor.fetchall()
 
-            # Create the same table in the destination database
-            destination_cursor.execute(f"CREATE TABLE IF NOT EXISTS {table_name} ({column_names});")
+        # Create the corresponding table in the MySQL database (assuming table structure is the same)
+        # You can create the table manually in the MySQL database with the same structure as in SQLite
+        # or use Python to fetch the table schema from SQLite and create the same table in MySQL
 
-            # Insert data into the destination table
-            for row in rows:
-                placeholders = ', '.join(['?' for _ in row])
-                destination_cursor.execute(f"INSERT INTO {table_name} VALUES ({placeholders});", row)
+        # Insert the data from the SQLite table into the corresponding table in the MySQL database
+        # Assuming the table structure is the same, if not, modify the insert query accordingly
+        for row in rows:
+            insert_query = f"INSERT INTO {table_name} VALUES ({','.join(['%s']*len(row))})"
+            mysql_cursor.execute(insert_query, row)
 
-        # Commit changes and close the connections
-        destination_conn.commit()
-        destination_conn.close()
-        source_conn.close()
+        # Commit the changes to the MySQL database for each table
+        mysql_conn.commit()
 
-        print("Data copied successfully!")
-    except Exception as e:
-        print("Error:", e)
+    print("Database duplication successful!")
 
-if __name__ == "__main__":
-    source_db = "database.db"
-    destination_db = "database.sqlite"
+except Exception as e:
+    print("Error:", str(e))
 
-    copy_data(source_db, destination_db)
+finally:
+    # Close the database connections
+    sqlite_cursor.close()
+    sqlite_conn.close()
+    mysql_cursor.close()
+    mysql_conn.close()
