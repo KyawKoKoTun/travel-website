@@ -19,12 +19,22 @@ function runDirection(start, end) {
 
     var dir = MQ.routing.directions();
 
+    var routeOptions = {
+        routeType: 'pedestrian',
+        mustAvoidLinkIds: [],
+        narrativeType: 'none',
+        routeColor: '0000FF', // Blue color in hexadecimal
+        routeWidth: 5,
+        maxRoutes: 1
+    };
+
+    
     dir.route({
         locations: [
             { latLng: { lat: lat, lng: lng } },
             { latLng: { lat: lat1, lng: lng1 } }
         ]
-    });
+    }, routeOptions);
 
 
     CustomRouteLayer = MQ.Routing.RouteLayer.extend({
@@ -58,10 +68,16 @@ function runDirection(start, end) {
             marker = L.marker(location.latLng, { icon: custom_icon }).addTo(map);
 
             return marker;
+        },
+
+        createRoutePolyline: function (locations, options) {
+            options = options || {};
+            options.color = 'blue'; // Set the color of the route polyline to blue
+            return L.Routing.Line.createPolyline(locations, options);
         }
     });
 
-    map.addLayer(new CustomRouteLayer({
+    map.addLayer(new MQ.Routing.RouteLayer({
         directions: dir,
         fitBounds: true
     }));
