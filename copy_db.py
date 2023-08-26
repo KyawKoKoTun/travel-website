@@ -42,6 +42,7 @@ try:
 
         # Insert the data from the SQLite table into the corresponding table in the MySQL database
         # Assuming the table structure is the same, if not, modify the insert query accordingly
+        
         for row in rows:
             insert_query = f"INSERT INTO {table_name} VALUES ({','.join(['%s']*len(row))})"
             mysql_cursor.execute(insert_query, row)

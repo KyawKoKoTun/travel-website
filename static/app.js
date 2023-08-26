@@ -27,14 +27,13 @@ function runDirection(start, end) {
         routeWidth: 5,
         maxRoutes: 1
     };
-
     
     dir.route({
         locations: [
             { latLng: { lat: lat, lng: lng } },
             { latLng: { lat: lat1, lng: lng1 } }
         ]
-    }, routeOptions);
+    });
 
 
     CustomRouteLayer = MQ.Routing.RouteLayer.extend({
@@ -70,11 +69,6 @@ function runDirection(start, end) {
             return marker;
         },
 
-        createRoutePolyline: function (locations, options) {
-            options = options || {};
-            options.color = 'blue'; // Set the color of the route polyline to blue
-            return L.Routing.Line.createPolyline(locations, options);
-        }
     });
 
     map.addLayer(new MQ.Routing.RouteLayer({

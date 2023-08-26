@@ -21,12 +21,14 @@ class User(db.Model, Query):
     name = db.Column(db.String(50))
     email = db.Column(db.String(100), unique=True)
     password = db.Column(db.String(100))
+    nrc = db.Column(db.String(255))
+    birthday = db.Column(db.String(100))
     bookings = db.relationship('Booking', backref='user', lazy=True)
     token = db.Column(db.String(100), unique=True)
     comments = db.relationship('Comment', backref='user', lazy=True)
 
     def __repr__(self):
-        return self.email
+        return f"{self.name} - {self.nrc} - {self.birthday}"
 
 
 class Place(db.Model, Query):
