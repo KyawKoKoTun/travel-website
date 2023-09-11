@@ -147,6 +147,7 @@ def register():
     else:
         name = request.form['name']
         email = request.form['email']
+        phone = request.form['phone']
         date = request.form['date']
         nrc = request.form['nrc']
         password = request.form['password']
@@ -155,7 +156,7 @@ def register():
             if validate_email(email):
                 if len(password) > 4:
                     token = generate_sha256_hash(email)
-                    user = User(name=name, email=email,
+                    user = User(name=name, email=email, phone=phone,
                                 password=generate_sha256_hash(password), token=token, birthday=date, nrc=nrc)
                     db.session.add(user)
                     db.session.commit()
