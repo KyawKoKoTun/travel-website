@@ -114,10 +114,10 @@ def hotel(id):
     return render('hotel.html', hotel=hotel)
 
 
-@app.route('/book/<int:id>/<month>/<day>/<year>')
-def book(id, month, day, year):
+@app.route('/book/<int:id>/<month>/<day>/<year>/<int:duration>')
+def book(id, month, day, year, duration):
     booking = Booking(user_id=token_to_user(
-        session['token']).id, hotel_id=id, date=f"{day} {month} {year}")
+        session['token']).id, hotel_id=id, date=f"{day} {month} {year}", duration=duration)
     db.session.add(booking)
     db.session.commit()
     return jsonify({

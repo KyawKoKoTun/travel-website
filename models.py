@@ -83,6 +83,7 @@ class Booking(db.Model, Query):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     date = db.Column(db.String(100))
+    duration = db.Column(db.Integer, default=1)
     hotel_id = db.Column(db.Integer, db.ForeignKey('hotel.id'))
 
 

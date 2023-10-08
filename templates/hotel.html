@@ -13,7 +13,7 @@
 <div class="bg-white w-full md:w-96 mx-auto p-8 mb-8 rounded-b-xl shadow-md">
     <div>
         <p class="mb-8">{{hotel.description}}</p>
-        <h1 class="text-xl mb-2 font-bold">MMK {{hotel.price}} / day</h1>
+        <h1 class="text-xl mb-2 font-bold">MMK {{hotel.price}} per day</h1>
         <button data-modal-target="defaultModal" data-modal-toggle="defaultModal" class="bg-emerald-600 text-white block hover:bg-emerald-400 rounded-xl text-xl px-12 py-4">Book Now</button>
     </div>
 </div>
@@ -37,6 +37,11 @@
                 <input type="number" id="number" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                     value="1" onchange="changePrice()" required>
             </div>
+            <div class="mx-6 mt-8">
+                <label for="duration" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Duration (Day)</label>
+                <input type="number" id="duration" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    value="1" onchange="changePrice()" required>
+            </div>
             <div class="p-6 space-y-6 w-fit mx-auto">
                 <div class="relative max-w-sm">
                     <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -48,7 +53,7 @@
                         placeholder="Select date" id="date">
                 </div>
             </div>
-            <h1 class="text-xl -mb-4 px-8 text-white font-bold price">MMK {{hotel.price}} / day</h1>
+            <h1 class="text-xl -mb-4 px-8 text-white font-bold price">MMK {{hotel.price}}</h1>
             <div class="flex items-center p-6 space-x-2 border-t border-gray-200 rounded-b dark:border-gray-600">
                 <button onclick="book()" id="book" type="button" class="text-white w-28 bg-emerald-600 hover:bg-emerald-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center"><span id="book-text">Book Now</span>
                     <div role="status" class="hidden" id="spinner">
@@ -71,8 +76,9 @@
 
     function changePrice() {
         elements = document.querySelectorAll('.price')
+        duration = document.getElementById('duration').value
         elements.forEach((element) => {
-            element.innerText = 'MMK ' + parseInt('{{hotel.price}}') * document.getElementById('number').value + '/ day'
+            element.innerText = 'MMK ' + parseInt('{{hotel.price}}') * document.getElementById('number').value * duration
         })
     }
 
@@ -80,7 +86,7 @@
         if ('{{signed_in}}' != 'None') {
             document.getElementById('book-text').style.display = 'none'
             document.getElementById('spinner').style.display = 'inline'
-            fetch('/book/{{hotel.id}}/' + document.getElementById('date').value).then(response => response.text()).then(data => {
+            fetch('/book/{{hotel.id}}/' + document.getElementById('date').value + '/' + document.getElementById('duration').value).then(response => response.text()).then(data => {
                 console.log(data)
                 window.open('/profile', '_self')
             })
